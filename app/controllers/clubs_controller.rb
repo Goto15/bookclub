@@ -1,4 +1,4 @@
-class ClubController < ApplicationController
+class ClubsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :show_errors
 
   def index

@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  root :to => 'club#index'
+  root :to => 'clubs#index'
 
   constraints subdomain: 'api' do
-    get '/clubs', to: 'club#index'
-    get '/clubs/:id', to: 'club#show'
+    resources :clubs
+    # get '/clubs', to: 'clubs#index'
+    # get '/clubs/:id', to: 'clubs#show'
   end
 
 end
