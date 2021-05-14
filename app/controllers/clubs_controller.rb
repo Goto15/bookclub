@@ -9,7 +9,7 @@ class ClubsController < ApplicationController
     club = Club.new(club_params)
 
     if club.save
-      redirect_to club_path(@club.id)
+      redirect_to club_path(club.id)
     else
       render :action => 'new'
     end
@@ -25,6 +25,7 @@ class ClubsController < ApplicationController
     if club.update(club_params)
       redirect_to club_path(club)
     else
+      # TODO: Needs some explanation as to why the update failed
       render :action => 'show'
     end
   end
