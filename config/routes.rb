@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   constraints subdomain: 'api' do
     resources :clubs
+    resources :members
   end
 
 end
