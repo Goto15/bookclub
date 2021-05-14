@@ -8,7 +8,9 @@ class MembersController < ApplicationController
   end
 
   def create
-    member = Mamber.new(member_params)
+    member = Member.new(member_params)
+    # TODO: This might not exactly work the way I want it to. Requires more research
+    member.id = SecureRandom.uuid
 
     if member.save
       redirect_to member_path(member.id)

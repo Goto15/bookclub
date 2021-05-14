@@ -7,6 +7,8 @@ class ClubsController < ApplicationController
 
   def create
     club = Club.new(club_params)
+    # TODO: This might not exactly work the way I want it to. Requires more research
+    club.id = SecureRandom.uuid
 
     if club.save
       redirect_to club_path(club.id)
