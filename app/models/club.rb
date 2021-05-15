@@ -1,3 +1,4 @@
 class Club < ApplicationRecord
-  has_many :groupmembers
+  has_many :clubmembers
+  self.primary_key = "uuid"
 end
