@@ -40,6 +40,7 @@ class ClubsController < ApplicationController
   end
 
 # ---------- PRIVATE ---------- #
+
   private
   def club_params
     params.require(:club).permit(:name)
