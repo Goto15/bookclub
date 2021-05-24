@@ -20,15 +20,15 @@ ActiveRecord::Schema.define(version: 5) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "clubs", primary_key: "uuid", force: :cascade do |t|
-    t.string "name"
+  create_table "clubmembers", force: :cascade do |t|
+    t.integer "member_id"
+    t.integer "club_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "lcubmembers", force: :cascade do |t|
-    t.integer "member_id"
-    t.integer "club_id"
+  create_table "clubs", primary_key: "uuid", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
