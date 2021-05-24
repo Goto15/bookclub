@@ -13,6 +13,7 @@ class ClubsController < ApplicationController
     if club.save
       redirect_to club_path(club.uuid)
     else
+      # TODO: more information
       render :action => 'new'
     end
   end

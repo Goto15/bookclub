@@ -9,8 +9,6 @@ class MembersController < ApplicationController
 
   def create
     member = Member.new(member_params)
-    # TODO: This might not exactly work the way I want it to. Requires more research
-    member.id = SecureRandom.uuid
 
     if member.save
       redirect_to member_path(member.id)
@@ -43,7 +41,7 @@ class MembersController < ApplicationController
 
 # ---------- PRIVATE ----------- #
   private
-  def mamber_params
+  def member_params
     params.require(:member).permit(:name)
   end
 
