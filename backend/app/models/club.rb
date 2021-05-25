@@ -6,11 +6,10 @@ class Club < ApplicationRecord
   has_many :meetings
   has_many :books, :through => :members
 
-# ----- CALLBACKS ----- #
+  # ----- CALLBACKS ----- #
   before_create :generate_uuid
 
   def generate_uuid
     self.uuid = SecureRandom.uuid
   end
-
 end
