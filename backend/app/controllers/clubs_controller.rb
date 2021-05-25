@@ -1,9 +1,6 @@
 class ClubsController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :show_errors
 
-# ----- CALLBACKS ----- #
-  before_create :generate_uuid
-
   def index
     render json: Club.all
   end
@@ -46,10 +43,6 @@ class ClubsController < ApplicationController
   private
   def club_params
     params.require(:club).permit(:name)
-  end
-
-  def generate_uuid
-    self.uuid = SecureRandom.uuid
   end
 
   # TODO: Currently only handles unfound IDs

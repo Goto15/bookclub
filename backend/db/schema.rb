@@ -27,7 +27,8 @@ ActiveRecord::Schema.define(version: 5) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "clubs", primary_key: "uuid", force: :cascade do |t|
+  create_table "clubs", id: false, force: :cascade do |t|
+    t.string "uuid"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
