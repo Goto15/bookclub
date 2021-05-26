@@ -39,6 +39,11 @@ class MembersController < ApplicationController
     redirect_to members_path
   end
 
+  def member_books
+    member = Member.find(params[:id])
+    render json: member.books
+  end
+
 # ---------- PRIVATE ----------- #
   private
   def member_params

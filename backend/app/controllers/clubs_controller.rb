@@ -9,7 +9,7 @@ class ClubsController < ApplicationController
     club = Club.new(club_params)
 
     if club.save
-      redirect_to club_path(club.uuid)
+      redirect_to club_path(club.id)
     else
       # TODO: more information
       render :action => 'new'

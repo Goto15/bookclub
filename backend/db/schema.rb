@@ -15,14 +15,14 @@ ActiveRecord::Schema.define(version: 5) do
   create_table "books", force: :cascade do |t|
     t.string "title"
     t.string "author"
-    t.integer "member_id"
+    t.string "member_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "clubmembers", force: :cascade do |t|
-    t.integer "member_id"
-    t.integer "club_id"
+    t.string "member_id"
+    t.string "club_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -34,14 +34,16 @@ ActiveRecord::Schema.define(version: 5) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "meetings", force: :cascade do |t|
+  create_table "meetings", id: false, force: :cascade do |t|
+    t.string "uuid"
     t.string "name"
-    t.integer "club_id"
+    t.string "club_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "members", force: :cascade do |t|
+  create_table "members", id: false, force: :cascade do |t|
+    t.string "uuid"
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

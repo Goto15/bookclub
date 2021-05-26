@@ -3246,3 +3246,1566 @@ Migrating to CreateMeetings (5)
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[36mClub Load (0.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (22.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "books"[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubmembers"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubs"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "meetings"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "meetings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "members"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "members" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (5)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(1),
+(2),
+(3),
+(4);
+
+[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 13:08:10.775755"], ["updated_at", "2021-05-25 13:08:10.775755"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "3b0103adac627b03ea1d2b3e5121f428db4ec180"], ["created_at", "2021-05-25 13:08:10.788266"], ["updated_at", "2021-05-25 13:08:10.788266"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "books"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubmembers"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubs"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "meetings"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "meetings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "members"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "members" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (5)[0m
+  [1m[35m (1.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(1),
+(2),
+(3),
+(4);
+
+[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 13:08:10.835223"], ["updated_at", "2021-05-25 13:08:10.835223"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.7ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-05-25 13:08:10.871695"], ["key", "environment"]]
+  [1m[35m (2.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "3b0103adac627b03ea1d2b3e5121f428db4ec180"], ["created_at", "2021-05-25 13:08:10.884379"], ["updated_at", "2021-05-25 13:08:10.884379"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (0.4ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "3956a9d2-94dc-4e8b-afcd-450843badeeb"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 13:08:10.916721"], ["updated_at", "2021-05-25 13:08:10.916721"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "books"[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubmembers"[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubs"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "meetings"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "meetings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "members"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "members" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (5)[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(1),
+(2),
+(3),
+(4);
+
+[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 13:10:14.084723"], ["updated_at", "2021-05-25 13:10:14.084723"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "3b0103adac627b03ea1d2b3e5121f428db4ec180"], ["created_at", "2021-05-25 13:10:14.098132"], ["updated_at", "2021-05-25 13:10:14.098132"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "books"[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubmembers"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "clubs"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "meetings"[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "meetings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "members"[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "members" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (5)[0m
+  [1m[35m (2.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(1),
+(2),
+(3),
+(4);
+
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 13:10:14.138996"], ["updated_at", "2021-05-25 13:10:14.138996"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2021-05-25 13:10:14.147868"], ["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "3b0103adac627b03ea1d2b3e5121f428db4ec180"], ["created_at", "2021-05-25 13:10:14.181972"], ["updated_at", "2021-05-25 13:10:14.181972"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (0.3ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "c8ff775d-73d4-483a-9360-513b92926234"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 13:10:14.206685"], ["updated_at", "2021-05-25 13:10:14.206685"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (6.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 13:10:40.198410"], ["updated_at", "2021-05-25 13:10:40.198410"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (1.8ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "85ae7c7b-e917-43a4-b55a-ffba45ce194a"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 13:36:44.544513"], ["updated_at", "2021-05-25 13:36:44.544513"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.9ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "8da211a4-e861-4c45-af78-0ee89e5ad0bd"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 13:36:44.563745"], ["updated_at", "2021-05-25 13:36:44.563745"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Load (0.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."uuid" = ? LIMIT ?[0m  [["uuid", "85"], ["LIMIT", 1]]
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "8"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "8"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Load (0.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."uuid" = ? LIMIT ?[0m  [["uuid", "85"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/" for 127.0.0.1 at 2021-05-25 09:50:57 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ClubsController#index as HTML
+  [1m[36mClub Load (0.2ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:5:in `index'
+Completed 200 OK in 91ms (Views: 61.8ms | ActiveRecord: 0.9ms | Allocations: 6822)
+
+
+Started GET "/" for 127.0.0.1 at 2021-05-25 09:51:04 -0500
+Processing by ClubsController#index as HTML
+  [1m[36mClub Load (0.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 936)
+
+
+Started GET "/clubs" for 127.0.0.1 at 2021-05-25 09:51:08 -0500
+Processing by ClubsController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mClub Load (0.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs"[0m
+  ↳ app/controllers/clubs_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 936)
+
+
+Started GET "/members/" for 127.0.0.1 at 2021-05-25 09:51:14 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 14ms (Views: 7.2ms | ActiveRecord: 0.6ms | Allocations: 5873)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 09:51:18 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/books"):
+  
+actionpack (6.0.3.7) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.7) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.7) lib/rails/engine.rb:527:in `call'
+puma (4.3.8) lib/puma/configuration.rb:228:in `call'
+puma (4.3.8) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.8) lib/puma/server.rb:472:in `process_client'
+puma (4.3.8) lib/puma/server.rb:328:in `block in run'
+puma (4.3.8) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/favicon.ico" for 127.0.0.1 at 2021-05-25 09:51:18 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.7) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.7) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.7) lib/rails/engine.rb:527:in `call'
+puma (4.3.8) lib/puma/configuration.rb:228:in `call'
+puma (4.3.8) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.8) lib/puma/server.rb:472:in `process_client'
+puma (4.3.8) lib/puma/server.rb:328:in `block in run'
+puma (4.3.8) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:11 -0500
+  [1m[35m (30.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 16ms (ActiveRecord: 0.2ms | Allocations: 3562)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 141)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:06:12 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 141)
+
+
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" integer, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 15:06:58.589885"], ["updated_at", "2021-05-25 15:06:58.589885"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (103.2ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "be815690-5f8f-44be-b2d2-756b9b9cb82f"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 15:07:13.666578"], ["updated_at", "2021-05-25 15:07:13.666578"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.4ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 15:07:13.781640"], ["updated_at", "2021-05-25 15:07:13.781640"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Load (0.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."uuid" = ? LIMIT ?[0m  [["uuid", "0"], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "0"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "0"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Load (0.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."uuid" = ? LIMIT ?[0m  [["uuid", "0"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:27 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 56ms (ActiveRecord: 0.4ms | Allocations: 3564)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:27 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:27 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:27 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:27 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 8ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 141)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 133)
+
+
+Started GET "/books" for 127.0.0.1 at 2021-05-25 10:07:28 -0500
+Processing by BooksController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+Redirected to http://api.localhost:3000/books
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 141)
+
+
+Started GET "/members/" for 127.0.0.1 at 2021-05-25 10:08:25 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.4ms | Allocations: 3716)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3" for 127.0.0.1 at 2021-05-25 10:09:00 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `show'
+Completed 200 OK in 11ms (Views: 0.3ms | ActiveRecord: 0.6ms | Allocations: 6077)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3" for 127.0.0.1 at 2021-05-25 10:10:44 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 26ms (ActiveRecord: 0.3ms | Allocations: 3560)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:10:44 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 0.6ms | Allocations: 3687)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:17:29 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 17ms (Views: 6.3ms | ActiveRecord: 0.6ms | Allocations: 6816)
+
+
+Started GET "/members/1" for 127.0.0.1 at 2021-05-25 10:17:32 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"1"}
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 441)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:17:32 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 927)
+
+
+Started GET "/members/1" for 127.0.0.1 at 2021-05-25 10:17:46 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"1"}
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 142)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:17:46 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 927)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3" for 127.0.0.1 at 2021-05-25 10:17:56 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 142)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:17:56 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 927)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:18:24 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 9ms (Views: 5.1ms | ActiveRecord: 0.4ms | Allocations: 6116)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3" for 127.0.0.1 at 2021-05-25 10:18:28 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 139)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:18:28 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 919)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:19:30 -0500
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 72ms (Views: 9.0ms | ActiveRecord: 0.7ms | Allocations: 6816)
+
+
+Started GET "/members/1" for 127.0.0.1 at 2021-05-25 10:19:34 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"1"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "1"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:22:in `show'
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 58ms (ActiveRecord: 0.3ms | Allocations: 1098)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:19:34 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 919)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3" for 127.0.0.1 at 2021-05-25 10:19:51 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:22:in `show'
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 734)
+
+
+Started GET "/members/1" for 127.0.0.1 at 2021-05-25 10:19:59 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"1"}
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "1"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:22:in `show'
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms | Allocations: 635)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:19:59 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 921)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3/books" for 127.0.0.1 at 2021-05-25 10:20:05 -0500
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 3ms (ActiveRecord: 0.0ms | Allocations: 146)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:20:06 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 927)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 10:21:11 -0500
+  [1m[35m (7.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 17ms (Views: 8.5ms | ActiveRecord: 0.9ms | Allocations: 6816)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3" for 127.0.0.1 at 2021-05-25 10:21:14 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `show'
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.4ms | Allocations: 1159)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3/books" for 127.0.0.1 at 2021-05-25 10:21:19 -0500
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", nil]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Completed 200 OK in 24ms (Views: 4.2ms | ActiveRecord: 0.5ms | Allocations: 5666)
+
+
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  [1m[36mBook Load (0.1ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ? LIMIT ?[0m  [["member_id", nil], ["LIMIT", 11]]
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" LIMIT ?[0m  [["LIMIT", 11]]
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3/books" for 127.0.0.1 at 2021-05-25 11:01:36 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", nil]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Completed 200 OK in 33ms (Views: 9.4ms | ActiveRecord: 0.6ms | Allocations: 1488)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3/books" for 127.0.0.1 at 2021-05-25 11:03:58 -0500
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", nil]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Completed 200 OK in 46ms (Views: 6.6ms | ActiveRecord: 1.5ms | Allocations: 10514)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3" for 127.0.0.1 at 2021-05-25 11:04:02 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 181)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 11:04:02 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.3ms | Allocations: 962)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3" for 127.0.0.1 at 2021-05-25 11:06:55 -0500
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.5ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `show'
+Completed 200 OK in 25ms (Views: 0.6ms | ActiveRecord: 0.9ms | Allocations: 7019)
+
+
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3/books" for 127.0.0.1 at 2021-05-25 11:07:51 -0500
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", nil]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Completed 200 OK in 57ms (Views: 16.7ms | ActiveRecord: 0.8ms | Allocations: 5719)
+
+
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_uuid" integer, "club_uuid" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_uuid" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_uuid" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 16:14:19.067021"], ["updated_at", "2021-05-25 16:14:19.067021"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (0.4ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "0a77200f-ad97-4a3b-b3d9-fc3e8c9194cb"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 16:14:21.887035"], ["updated_at", "2021-05-25 16:14:21.887035"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.3ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "c4467b63-108e-46b3-b031-21eb738489b8"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 16:14:21.899064"], ["updated_at", "2021-05-25 16:14:21.899064"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (3.9ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "1d89c321-7519-43d2-ab2f-87eef6043aaf"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 16:15:03.251637"], ["updated_at", "2021-05-25 16:15:03.251637"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.4ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "a4aac11a-0be3-4ce2-ab27-2668a896a388"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 16:15:03.268321"], ["updated_at", "2021-05-25 16:15:03.268321"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/members/bc636e82-55e5-4cc3-bffe-a9e9806aedd3/books" for 127.0.0.1 at 2021-05-25 11:15:16 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"bc636e82-55e5-4cc3-bffe-a9e9806aedd3"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "bc636e82-55e5-4cc3-bffe-a9e9806aedd3"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 12ms (ActiveRecord: 0.5ms | Allocations: 4210)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 11:15:16 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.4ms | Allocations: 3811)
+
+
+Started GET "/members/c4467b63-108e-46b3-b031-21eb738489b8" for 127.0.0.1 at 2021-05-25 11:15:26 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"c4467b63-108e-46b3-b031-21eb738489b8"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "c4467b63-108e-46b3-b031-21eb738489b8"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `show'
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/members/c4467b63-108e-46b3-b031-21eb738489b8/books" for 127.0.0.1 at 2021-05-25 11:15:29 -0500
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"c4467b63-108e-46b3-b031-21eb738489b8"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "c4467b63-108e-46b3-b031-21eb738489b8"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", "c4467b63-108e-46b3-b031-21eb738489b8"]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.6ms | Allocations: 4327)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: books.member_id):
+  
+app/controllers/members_controller.rb:43:in `books'
+  [1m[35m (8.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_uuid" integer, "club_uuid" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_uuid" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_uuid" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 16:18:21.688620"], ["updated_at", "2021-05-25 16:18:21.688620"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (0.5ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "25f7af7f-1be2-42e9-a984-b8da13180d7f"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 16:18:24.723832"], ["updated_at", "2021-05-25 16:18:24.723832"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.4ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 16:18:24.736410"], ["updated_at", "2021-05-25 16:18:24.736410"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/members/c4467b63-108e-46b3-b031-21eb738489b8/books" for 127.0.0.1 at 2021-05-25 11:18:33 -0500
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"c4467b63-108e-46b3-b031-21eb738489b8"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "c4467b63-108e-46b3-b031-21eb738489b8"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Redirected to http://api.localhost:3000/members
+Completed 302 Found in 31ms (ActiveRecord: 0.5ms | Allocations: 4209)
+
+
+Started GET "/members" for 127.0.0.1 at 2021-05-25 11:18:33 -0500
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.4ms | Allocations: 3681)
+
+
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709" for 127.0.0.1 at 2021-05-25 11:18:40 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `show'
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.1ms | Allocations: 732)
+
+
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:18:44 -0500
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", "78aa27fa-026e-41b7-8c2f-433edbb64709"]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.9ms | Allocations: 4327)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: books.member_id):
+  
+app/controllers/members_controller.rb:43:in `books'
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:19:09 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", "78aa27fa-026e-41b7-8c2f-433edbb64709"]]
+  ↳ app/controllers/members_controller.rb:43:in `books'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.3ms | Allocations: 7946)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: books.member_id):
+  
+app/controllers/members_controller.rb:43:in `books'
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:19:28 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+AbstractController::ActionNotFound (The action 'books' could not be found for MembersController):
+  
+actionpack (6.0.3.7) lib/abstract_controller/base.rb:131:in `process'
+actionpack (6.0.3.7) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.0.3.7) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.0.3.7) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.0.3.7) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.3.7) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.3.7) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.3.7) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.3.7) lib/action_dispatch/routing/route_set.rb:834:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.3) lib/rack/etag.rb:27:in `call'
+rack (2.2.3) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.3) lib/rack/head.rb:12:in `call'
+activerecord (6.0.3.7) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.3.7) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.7) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.7) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.7) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.7) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.7) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.7) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+railties (6.0.3.7) lib/rails/engine.rb:527:in `call'
+puma (4.3.8) lib/puma/configuration.rb:228:in `call'
+puma (4.3.8) lib/puma/server.rb:718:in `handle_request'
+puma (4.3.8) lib/puma/server.rb:472:in `process_client'
+puma (4.3.8) lib/puma/server.rb:328:in `block in run'
+puma (4.3.8) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:19:39 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#member_books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+  [1m[36mMember Load (2.5ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE (78aa27fa-026e-41b7-8c2f-433edbb64709) LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.8ms | Allocations: 3489)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: unrecognized token: "78aa27fa"):
+  
+app/controllers/members_controller.rb:43:in `member_books'
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:19:57 -0500
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#member_books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", "78aa27fa-026e-41b7-8c2f-433edbb64709"]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.5ms | Allocations: 7839)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: books.member_id):
+  
+app/controllers/members_controller.rb:43:in `member_books'
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:20:07 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#member_books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 3051)
+
+
+  
+TypeError (can't cast Hash):
+  
+app/controllers/members_controller.rb:43:in `member_books'
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:20:17 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#member_books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", "78aa27fa-026e-41b7-8c2f-433edbb64709"]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 1.6ms | Allocations: 7844)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: books.member_id):
+  
+app/controllers/members_controller.rb:43:in `member_books'
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:21:04 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#member_books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 0.8ms | Allocations: 6052)
+
+
+Started GET "/members/78aa27fa-026e-41b7-8c2f-433edbb64709/books" for 127.0.0.1 at 2021-05-25 11:21:11 -0500
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by MembersController#member_books as HTML
+  Parameters: {"subdomain"=>"api", "uuid"=>"78aa27fa-026e-41b7-8c2f-433edbb64709"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", "78aa27fa-026e-41b7-8c2f-433edbb64709"]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 1.4ms | Allocations: 7799)
+
+
+  
+ActiveRecord::StatementInvalid (SQLite3::SQLException: no such column: books.member_id):
+  
+app/controllers/members_controller.rb:43:in `member_books'
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 1]]
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ? LIMIT ?[0m  [["member_id", "78aa27fa-026e-41b7-8c2f-433edbb64709"], ["LIMIT", 11]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (4.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_uuid" integer, "club_uuid" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (4.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_uuid" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 17:13:23.122032"], ["updated_at", "2021-05-25 17:13:23.122032"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (5.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (4.7ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "ce74e7db-04e8-43bf-9f49-d7a53a539457"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 17:13:57.444997"], ["updated_at", "2021-05-25 17:13:57.444997"]]
+  [1m[35m (1.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.7ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "0fa568db-4f91-40c7-b7d1-41390c70419f"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 17:13:57.474099"], ["updated_at", "2021-05-25 17:13:57.474099"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_uuid" varchar, "club_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 17:15:11.322938"], ["updated_at", "2021-05-25 17:15:11.322938"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (0.5ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "3398348c-152c-401f-8cd7-3f5e18f88905"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 17:15:21.971898"], ["updated_at", "2021-05-25 17:15:21.971898"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.4ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "5a17b7b2-ea6a-4537-a403-9803584d7c22"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 17:15:21.991033"], ["updated_at", "2021-05-25 17:15:21.991033"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (9.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mMember Load (3.5ms)[0m  [1m[34mSELECT "members".* FROM "members" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mMember Load (0.4ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "5a17b7b2-ea6a-4537-a403-9803584d7c22"], ["LIMIT", 1]]
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ? LIMIT ?[0m  [["member_id", "5a17b7b2-ea6a-4537-a403-9803584d7c22"], ["LIMIT", 11]]
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT "books".* FROM "books" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mClub Load (0.8ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mMeeting Load (0.3ms)[0m  [1m[34mSELECT "meetings".* FROM "meetings" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mClubmember Load (0.6ms)[0m  [1m[34mSELECT "clubmembers".* FROM "clubmembers" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (16.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_uuid" varchar, "club_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (3.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 17:19:19.344169"], ["updated_at", "2021-05-25 17:19:19.344169"]]
+  [1m[35m (1.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (0.5ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "cfb2ecb1-7e68-42a4-812f-c1d9ef7e1472"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 17:19:28.418718"], ["updated_at", "2021-05-25 17:19:28.418718"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.3ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "1823dc6d-10ff-460a-ab56-38549ef4bc40"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 17:19:28.432451"], ["updated_at", "2021-05-25 17:19:28.432451"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mClubmember Load (0.3ms)[0m  [1m[34mSELECT "clubmembers".* FROM "clubmembers" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_uuid" varchar, "club_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (3.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_uuid" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 17:20:08.725934"], ["updated_at", "2021-05-25 17:20:08.725934"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (6.4ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "6c11a7e7-20c3-46ab-9e69-cab1afa2c263"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 17:20:23.062601"], ["updated_at", "2021-05-25 17:20:23.062601"]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (6.5ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "a7dd0562-c4ae-4634-a45a-091f3b1d0ae7"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 17:20:23.092764"], ["updated_at", "2021-05-25 17:20:23.092764"]]
+  [1m[35m (6.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClubs (1)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE TABLE "clubs" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "1"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMembers (2)
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "members" ("uuid" varchar, "name" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClubmembers (3)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "clubmembers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "member_id" varchar, "club_id" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "3"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateBooks (4)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "books" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "title" varchar, "author" varchar, "member_id" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "4"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMeetings (5)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "meetings" ("uuid" varchar, "name" varchar, "club_id" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "5"]]
+  [1m[35m (2.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2021-05-25 18:32:58.621693"], ["updated_at", "2021-05-25 18:32:58.621693"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Create (0.7ms)[0m  [1m[32mINSERT INTO "clubs" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "4362a0fb-d8bc-4c37-a7d6-27d4e3dc57e3"], ["name", "Franklin Ladies"], ["created_at", "2021-05-25 18:33:06.026068"], ["updated_at", "2021-05-25 18:33:06.026068"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Create (0.3ms)[0m  [1m[32mINSERT INTO "members" ("uuid", "name", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["uuid", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["name", "Annette Sullivan"], ["created_at", "2021-05-25 18:33:06.038983"], ["updated_at", "2021-05-25 18:33:06.038983"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Load (0.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."uuid" = ? LIMIT ?[0m  [["uuid", "4362a0fb-d8bc-4c37-a7d6-27d4e3dc57e3"], ["LIMIT", 1]]
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["LIMIT", 1]]
+  [1m[36mClubmember Create (0.3ms)[0m  [1m[32mINSERT INTO "clubmembers" ("member_id", "club_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["member_id", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["club_id", "4362a0fb-d8bc-4c37-a7d6-27d4e3dc57e3"], ["created_at", "2021-05-25 18:33:06.108026"], ["updated_at", "2021-05-25 18:33:06.108026"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMember Load (0.3ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["LIMIT", 1]]
+  [1m[36mBook Create (0.3ms)[0m  [1m[32mINSERT INTO "books" ("title", "author", "member_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["title", "Pigness of Pig"], ["author", "Joel Salatin"], ["member_id", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["created_at", "2021-05-25 18:33:06.125399"], ["updated_at", "2021-05-25 18:33:06.125399"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mClub Load (0.1ms)[0m  [1m[34mSELECT "clubs".* FROM "clubs" WHERE "clubs"."uuid" = ? LIMIT ?[0m  [["uuid", "4362a0fb-d8bc-4c37-a7d6-27d4e3dc57e3"], ["LIMIT", 1]]
+  [1m[36mMeeting Create (0.2ms)[0m  [1m[32mINSERT INTO "meetings" ("uuid", "name", "club_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["uuid", "9db30ed6-b78d-452a-bf3a-85e5cc054b9a"], ["name", "Monthly Meeting"], ["club_id", "4362a0fb-d8bc-4c37-a7d6-27d4e3dc57e3"], ["created_at", "2021-05-25 18:33:06.137724"], ["updated_at", "2021-05-25 18:33:06.137724"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["LIMIT", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ? LIMIT ?[0m  [["member_id", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["LIMIT", 11]]
+Started GET "/members/" for 127.0.0.1 at 2021-05-25 13:54:36 -0500
+  [1m[35m (6.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by MembersController#index as HTML
+  Parameters: {"subdomain"=>"api"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members"[0m
+  ↳ app/controllers/members_controller.rb:7:in `index'
+Completed 200 OK in 25ms (Views: 10.0ms | ActiveRecord: 0.7ms | Allocations: 6816)
+
+
+Started GET "/members/b1dba1f9-08fb-4695-8363-7109f8de76ea" for 127.0.0.1 at 2021-05-25 13:54:44 -0500
+Processing by MembersController#show as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"b1dba1f9-08fb-4695-8363-7109f8de76ea"}
+  [1m[36mMember Load (0.2ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:21:in `show'
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 0.2ms | Allocations: 1159)
+
+
+Started GET "/members/b1dba1f9-08fb-4695-8363-7109f8de76ea/books" for 127.0.0.1 at 2021-05-25 13:54:48 -0500
+Processing by MembersController#member_books as HTML
+  Parameters: {"subdomain"=>"api", "id"=>"b1dba1f9-08fb-4695-8363-7109f8de76ea"}
+  [1m[36mMember Load (0.1ms)[0m  [1m[34mSELECT "members".* FROM "members" WHERE "members"."uuid" = ? LIMIT ?[0m  [["uuid", "b1dba1f9-08fb-4695-8363-7109f8de76ea"], ["LIMIT", 1]]
+  ↳ app/controllers/members_controller.rb:43:in `member_books'
+  [1m[36mBook Load (0.2ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."member_id" = ?[0m  [["member_id", "b1dba1f9-08fb-4695-8363-7109f8de76ea"]]
+  ↳ app/controllers/members_controller.rb:44:in `member_books'
+Completed 200 OK in 30ms (Views: 17.5ms | ActiveRecord: 0.8ms | Allocations: 8465)
+
+
